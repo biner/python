@@ -55,6 +55,16 @@ RUN set -eux; \
 		zlib1g-dev \
 	; \
 	\
+
+  	wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz
+   	tar -zxvf ta-lib-0.4.0-src.tar.gz 
+  	cd ta-lib/ 
+  	./configure --prefix=/usr 
+  	make -j4
+ 	make install
+  	rm ta-lib-0.4.0-src.tar.gz 
+   	rm ta-lib -rf
+  
 	wget -O python.tar.xz "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz"; \
 	wget -O python.tar.xz.asc "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz.asc"; \
 	GNUPGHOME="$(mktemp -d)"; export GNUPGHOME; \
